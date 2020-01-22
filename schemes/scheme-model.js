@@ -22,12 +22,18 @@ function addStep(stepData, id) {
   return db("steps").insert({ scheme_id: id, ...stepData });
 }
 
+function update(changes, id) {
+  return db("schemes")
+    .where({ id })
+    .update({ ...changes });
+}
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
-  addStep
-  //   update,
+  addStep,
+  update
   //   remove
 };
