@@ -29,3 +29,27 @@ SELECT
 FROM [order] o
 JOIN customer c ON o.CustomerId = c.Id
 JOIN employee e ON e.Id = o.EmployeeId;
+--Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 8 records.
+SELECT
+  c.categoryname,
+  count(p.categoryid)
+FROM Categories c
+join products p on p.categoryid = c.categoryid
+group by
+  c.categoryname;
+--Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records.
+SELECT
+  orderid,
+  sum(quantity) itemCount
+from orderdetails
+group by
+  orderid;
+--Find the number of shipments by each shipper
+select
+  s.shippername,
+  sum(od.quantity) total_shipments
+from shippers s
+join orders o on o.shipperid = s.shipperid
+join orderdetails od on od.orderid = o.orderid
+group by
+  s.shippername
