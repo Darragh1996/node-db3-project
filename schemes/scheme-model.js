@@ -10,10 +10,14 @@ function findById(id) {
     .first();
 }
 
+function findSteps(id) {
+  return db("steps").where({ scheme_id: id });
+}
+
 module.exports = {
   find,
-  findById
-  //   findSteps,
+  findById,
+  findSteps
   //   add,
   //   addStep,
   //   update,
