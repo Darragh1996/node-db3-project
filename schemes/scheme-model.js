@@ -18,12 +18,16 @@ function add({ scheme_name }) {
   return db("schemes").insert({ scheme_name });
 }
 
+function addStep(stepData, id) {
+  return db("steps").insert({ scheme_id: id, ...stepData });
+}
+
 module.exports = {
   find,
   findById,
   findSteps,
-  add
-  //   addStep,
+  add,
+  addStep
   //   update,
   //   remove
 };
