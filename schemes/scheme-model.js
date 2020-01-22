@@ -28,12 +28,18 @@ function update(changes, id) {
     .update({ ...changes });
 }
 
+function remove(id) {
+  return db("schemes")
+    .where({ id })
+    .del();
+}
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
   addStep,
-  update
-  //   remove
+  update,
+  remove
 };
